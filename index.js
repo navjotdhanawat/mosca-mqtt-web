@@ -28,19 +28,6 @@ function setup() {
 // fired whena  client is connected
 server.on('clientConnected', function (client) {
 
-  setInterval(function () {
-    var value = getRandomNumber(20, 99)
-    var message = {
-      topic: 'sensor-status',
-      payload: new Buffer(value.toString()), // or a Buffer
-      qos: 0, // 0, 1, or 2
-      retain: false // or true
-    };
-
-    server.publish(message, function () {
-      console.log('done!');
-    });
-  }, 2000);
 });
 
 function getRandomNumber(min, max) {
@@ -71,3 +58,17 @@ server.on('clientDisconnecting', function (client) {
 server.on('clientDisconnected', function (client) {
   console.log('clientDisconnected : ', client.id);
 });
+
+setInterval(function () {
+  var value = getRandomNumber(20, 99)
+  var message = {
+    topic: 'sensor-status',
+    payload: new Buffer(value.toString()), // or a Buffer
+    qos: 0, // 0, 1, or 2
+    retain: false // or true
+  };
+
+  server.publish(message, function () {
+    console.log('done!');
+  });
+}, 2000);
