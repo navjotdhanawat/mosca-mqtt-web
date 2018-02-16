@@ -1,5 +1,6 @@
 ## Mosca MQTT Web Example:
 
+![Screenshot](/mosca-mqtt-web.png)
 #### Installation:
 
 ```
@@ -22,3 +23,4 @@ var authenticate = function(client, username, password, callback) {
   callback(null, authorized);
 }
 ```
+
